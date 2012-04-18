@@ -1,0 +1,13 @@
+--- origsrc/mate-control-center-1.2.1/font-viewer/Makefile.am	2012-03-25 18:04:17.000000000 -0500
++++ src/mate-control-center-1.2.1/font-viewer/Makefile.am	2012-04-17 02:51:28.759787300 -0500
+@@ -29,7 +29,9 @@ install-mateconf-schemas:
+ endif
+ 
+ install-desktop-database: install-desktopDATA
+-	update-desktop-database $(DESTDIR)$(desktopdir)
++	if test -z "$(DESTDIR)"; then \
++	  update-desktop-database $(desktopdir); \
++	fi
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)$(desktopdir)/mimeinfo.cache

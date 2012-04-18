@@ -1,0 +1,11 @@
+--- origsrc/mate-control-center-1.2.1/libwindow-settings/Makefile.am	2012-03-25 18:04:17.000000000 -0500
++++ src/mate-control-center-1.2.1/libwindow-settings/Makefile.am	2012-04-17 02:50:26.768241500 -0500
+@@ -37,7 +37,7 @@ pkgconfig_DATA = mate-window-settings-2.
+ EXTRA_DIST = 					\
+ 	mate-window-settings-2.0.pc.in
+ 
+-wms_flags = -export_dynamic -avoid-version -module
++wms_flags = -export-dynamic -avoid-version -module -no-undefined
+ wmsdir = $(WM_MODULE_DIR)
+ 
+ wms_LTLIBRARIES =			\
