@@ -1,0 +1,15 @@
+inherit mate
+
+NAME="mate-control-center"
+VERSION=1.4.0
+RELEASE=1
+CATEGORY="MATE"
+SUMMARY="MATE desktop configuration applets"
+DESCRIPTION="MATE is a fork of the GNOME 2 desktop. It provides an intuitive
+and attractive desktop to Linux users using traditional metaphors."
+REQUIRES="mate-settings-daemon"
+
+PATCH_URI="1.2.1-install.patch
+           1.2.1-no-undefined.patch"
+
+CYGCONF_ARGS="--disable-update-mimedb"

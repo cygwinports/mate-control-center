@@ -1,7 +1,0 @@
-inherit mate
-
-
-PATCH_URI="1.2.1-install.patch
-           1.2.1-no-undefined.patch"
-
-CYGCONF_ARGS="--disable-update-mimedb"
