@@ -1,0 +1,30 @@
+--- origsrc/mate-control-center-1.6.0/libslab/Makefile.am	2013-03-31 17:20:21.000000000 -0500
++++ src/mate-control-center-1.6.0/libslab/Makefile.am	2013-07-28 02:23:32.979467800 -0500
+@@ -1,6 +1,3 @@
+-pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfig_DATA = libslab.pc
+-
+ AM_CPPFLAGS =					\
+ 	-I$(top_srcdir)				\
+ 	$(LIBSLAB_CFLAGS)			\
+@@ -28,9 +25,10 @@ HEADER_FILES=					\
+ 	system-tile.h				\
+ 	tile.h
+ 
+-lib_LTLIBRARIES = libslab.la
++noinst_LTLIBRARIES = libslab.la
+ 
+ libslab_la_SOURCES =				\
++	$(HEADER_FILES)				\
+ 	$(MARSHAL_GENERATED)			\
+ 	app-resizer.c				\
+ 	app-shell.c				\
+@@ -55,8 +53,6 @@ libslab_la_SOURCES =				\
+ 	tile-action.c				\
+ 	tile.c
+ 
+-libslab_includedir = $(includedir)/libslab
+-libslab_include_HEADERS = $(HEADER_FILES)
+ libslab_la_LIBADD = $(LIBSLAB_LIBS)
+ 
+ search-entry-watermark.h: search-entry-watermark.svg

@@ -2,14 +2,23 @@ inherit mate
 
 NAME="mate-control-center"
 VERSION=1.6.0
-RELEASE=1
+RELEASE=2
 CATEGORY="MATE"
 SUMMARY="MATE desktop configuration applets"
 DESCRIPTION="MATE is a fork of the GNOME 2 desktop. It provides an intuitive
 and attractive desktop to Linux users using traditional metaphors."
 REQUIRES="mate-settings-daemon"
 
-PATCH_URI="1.2.1-install.patch
-           1.2.1-no-undefined.patch"
+PATCH_URI="
+	1.2.1-install.patch
+	1.2.1-no-undefined.patch
+	1.6.0-noinst-libslab.patch
+"
+
+PKG_NAMES="${NAME}" # ${NAME}-devel
+mate_control_center_CONTENTS="etc/ usr/bin/ usr/lib/window-manager-settings/ usr/sbin/ usr/share/"
+# libmate-window-settings-devel ??
+mate_control_center_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+PKG_IGNORE=${mate_control_center_devel_CONTENTS}
 
 CYGCONF_ARGS="--disable-update-mimedb"
