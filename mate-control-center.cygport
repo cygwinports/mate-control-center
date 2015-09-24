@@ -1,7 +1,7 @@
 inherit mate
 
 NAME="mate-control-center"
-VERSION=1.8.3
+VERSION=1.10.1
 RELEASE=1
 CATEGORY="MATE"
 SUMMARY="MATE desktop configuration applets"
@@ -12,7 +12,7 @@ REQUIRES="mate-settings-daemon"
 PATCH_URI="
 	1.2.1-install.patch
 	1.2.1-no-undefined.patch
-	1.6.0-noinst-libslab.patch
+	1.10.1-noinst-libslab.patch
 "
 
 PKG_NAMES="${NAME}" # ${NAME}-devel
