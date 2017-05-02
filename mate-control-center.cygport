@@ -1,7 +1,7 @@
 inherit mate
 
 NAME="mate-control-center"
-VERSION=1.16.1
+VERSION=1.18.1
 RELEASE=1
 CATEGORY="MATE"
 SUMMARY="MATE desktop configuration applets"
@@ -15,10 +15,46 @@ PATCH_URI="
 	1.10.1-noinst-libslab.patch
 "
 
-PKG_NAMES="${NAME}" # ${NAME}-devel
-mate_control_center_CONTENTS="etc/ usr/bin/ usr/lib/window-manager-settings/ usr/sbin/ usr/share/"
+PKG_NAMES="${NAME} mate-font-viewer" # ${NAME}-devel
+mate_control_center_REQUIRES="mate-font-viewer"
+mate_control_center_CONTENTS="
+	--exclude=mate-font-viewer*
+	--exclude=mate-thumbnail-font*
+	etc/postinstall/${NAME}.sh
+	etc/xdg/menus/matecc.menu
+	usr/bin/*
+	usr/lib/window-manager-settings/
+	usr/sbin/*
+	usr/share/applications/*
+	usr/share/desktop-directories/matecc.directory
+	usr/share/doc/${NAME}/
+	usr/share/glib-2.0/schemas/org.mate.control-center.*
+	usr/share/help/*/${NAME}/
+	usr/share/icons/hicolor/*/*/*
+	usr/share/locale/*/*/${NAME}.mo
+	usr/share/man/man1/*
+	usr/share/${NAME}/
+	usr/share/mime/packages/mate-theme-package.xml
+"
 # libmate-window-settings-devel ??
-mate_control_center_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
-PKG_IGNORE=${mate_control_center_devel_CONTENTS}
+mate_control_center_devel_CONTENTS="
+	usr/include/mate-window-settings-2.0/
+	usr/lib/libmate-window-settings.dll.a
+	usr/lib/pkgconfig/mate-default-applications.pc
+	usr/lib/pkgconfig/mate-keybindings.pc
+	usr/lib/pkgconfig/mate-window-settings-2.0.pc
+"
+mate_font_viewer_CONTENTS="
+	usr/bin/mate-font-viewer.exe
+	usr/bin/mate-thumbnail-font.exe
+	usr/share/applications/mate-font-viewer.desktop
+	usr/share/man/man1/mate-font-viewer.1*
+	usr/share/man/man1/mate-thumbnail-font.1*
+	usr/share/thumbnailers/mate-font-viewer.thumbnailer
+"
+PKG_IGNORE="
+	${mate_control_center_devel_CONTENTS}
+	usr/share/polkit-1/actions/org.mate.randr.policy
+"
 
-CYGCONF_ARGS="--disable-update-mimedb --with-gtk=3.0"
+CYGCONF_ARGS="--disable-update-mimedb"
